@@ -1,7 +1,11 @@
-import { GET_FAVOURITE,ADD_FAVOURITE  } from '../actions/types';
+import { GET_FAVOURITE,ADD_FAVOURITE, REMOVE_FAVOURITE  } from '../actions/types';
 
 export default function(state = null, action) {
     switch(action.type) {
+    case REMOVE_FAVOURITE:
+        return Object.assign({}, state, {
+            data: state.data.filter(v => v.collectionId !== action.payload.collectionId)
+        }); 
     case ADD_FAVOURITE:
     if(state == null)
     {
@@ -11,7 +15,6 @@ export default function(state = null, action) {
     }
     else {
         state.data = state.data || [];
-        console.log(state.data);
         return Object.assign({}, state, {
            data: state.data.concat(action.payload)
         }); 

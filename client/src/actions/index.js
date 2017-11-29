@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-import { GET_FAVOURITE } from './types'
-import { ADD_FAVOURITE } from './types'
-import { GET_RESULTS } from './types'
+import { GET_FAVOURITE, ADD_FAVOURITE, GET_RESULTS, REMOVE_FAVOURITE  } from './types'
 
 export const getResults = (data) => {
     return function(dispatch) {
@@ -15,6 +13,12 @@ export const getResults = (data) => {
 export const addFavourite = (item) => {
     return function(dispatch) {
        dispatch({ type: ADD_FAVOURITE, payload: item});
+    }
+};
+
+export const removeFavourite = (item) => {
+    return function(dispatch) {
+       dispatch({ type: REMOVE_FAVOURITE, payload: item});
     }
 };
 

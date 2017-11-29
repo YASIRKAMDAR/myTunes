@@ -8,18 +8,14 @@ class Results extends React.Component {
     componentDidMount()
     {
     }
-    componentWillUnmount()
-    {
-        console.log("here");
-    }
     AddToFav(event) {
         event.preventDefault();
         var album = this.props.results.results.filter(v => v.collectionId == event.target.id)[0];
         this.props.addFavourite(album);
     }
-    render() {
-        var list = null;
-        console.log(this.props);
+    RemoveFav(event) {
+        event.preventDefault();
+        let list;
         if(this.props.location.pathname == "/")
         {
             if(this.props.results !== null)
@@ -27,6 +23,42 @@ class Results extends React.Component {
         }
         else
         {
+            if(this.props.favourites !== null)
+                list = this.props.favourites.data;
+        }
+        var album = list.filter(v => v.collectionId == event.target.id)[0];
+        this.props.removeFavourite(album);
+    }
+    favouriteClass(isFavourite, collectionID){
+        var favClass = "";
+        try {
+            if (isFavourite) {
+                favClass = "favourite";
+            } else {
+                if(this.props.favourites !== null)
+                {
+                    if(this.props.favourites.data.filter(v => v.collectionId == collectionID).length >0)
+                    {
+                        favClass = "favourite";
+                    }
+                }
+            }   
+        } catch (error) {
+            console.log(error);
+        }
+        return favClass;
+    }
+    render() {
+        var list = null;
+        var isFavourite = false;
+        if(this.props.location.pathname == "/")
+        {
+            if(this.props.results !== null)
+                list = this.props.results.results;
+        }
+        else
+        {
+            isFavourite = true;
             if(this.props.favourites !== null)
                 list = this.props.favourites.data;
         }
@@ -38,9 +70,9 @@ class Results extends React.Component {
                 return <p>No results to display</p>
             default:
                 return (
-                    <Row className="comp-block" id="resultsBlock">
+                    <Row id="resultsBlock">
                         {list.map((result, index) => (
-                            <Col md="6" lg="4" xs="12" key={result.collectionId}>
+                            <Col md="6" lg="4" xs="12" className={this.favouriteClass(isFavourite, result.collectionId)} key={result.collectionId}>
                                 <Card>
                                     <CardBody>
                                         <Row>
@@ -54,11 +86,14 @@ class Results extends React.Component {
                                         </Row>
                                         <div className="card-text text-truncate" title={result.collectionCensoredName}>{result.collectionCensoredName}</div>
                                         <Row>
-                                            <Col sm="6">
+                                            <Col sm="4">
                                                 <a href={result.collectionViewUrl} target="_blank">view details</a>
                                             </Col>
-                                            <Col sm="6">
+                                            <Col sm="8" className="add-favourites">
                                                 <a href={"#" + result.collectionId} id={result.collectionId} onClick={(event) => this.AddToFav(event)}>Add to favourites</a>
+                                            </Col>
+                                            <Col sm="8" className="remove-favourites">
+                                                <a href={"#" + result.collectionId} id={result.collectionId} onClick={(event) => this.RemoveFav(event)}>No more my favourite</a>
                                             </Col>
                                         </Row>
                                     </CardBody>

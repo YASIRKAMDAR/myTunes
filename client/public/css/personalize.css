@@ -115,12 +115,6 @@ nav input.form-control:active, nav input.form-control:focus,  nav input.form-con
 #resultsBlock > .col {
     margin-top: 20px; 
 }
-#LoginBlock button:focus {
-    box-shadow: 0 0 0 3px rgba(5,84,159,0.2);
-}
-#LoginBlock a {
-    color: #05549f;
-}
 .error-message {
     display: none;
 }
@@ -140,14 +134,26 @@ nav input.form-control:active, nav input.form-control:focus,  nav input.form-con
 #resultsBlock p.price {
     color: #000000;
 }
-#LoginBlock {
-    margin-left: 0px;
-    margin-right: 0px;
-    border-bottom: 1px solid #f6f6f6;
-}
 #resultsBlock .price {
     font-weight: bold;
 }
 #resultsBlock .card {
     margin-top: 30px; 
+}
+
+#resultsBlock .remove-favourites {
+    display: none; 
+}
+#resultsBlock .favourite .remove-favourites {
+    display: block; 
+}
+#resultsBlock .favourite .add-favourites {
+    display: none; 
+}
+#resultsBlock .favourite .card {
+    background-image: url(../images/star.svg);
+    background-position-x: 95%;
+    background-position-y: 10px;
+    background-repeat: no-repeat;
+    background-size: 10%;
 }
