@@ -13,6 +13,7 @@ var albums = require('./data/albums.json');
 
 /* GET api/results request. */
  app.get('/api/results', function(req, res, next) {
+  console.log('/api/results '+ req.query.artist);
   request('https://itunes.apple.com/search?entity=album&term=' + req.query.artist, function (error, response, body) {
     res.send(body);
   });

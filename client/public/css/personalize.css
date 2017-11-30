@@ -16,6 +16,16 @@
     border: none;
 }
 
+.search-block form img {
+    display: none;
+}
+.search-block.loading form img  {
+    display: block;
+}
+.search-block.loading form button {
+    display: none;
+}
+
 /* header block */
 nav 
 {
@@ -66,45 +76,20 @@ nav input.form-control:active, nav input.form-control:focus,  nav input.form-con
         padding-left: 0px; 
         padding-right: 0px; 
     }
-   /* nav .input-group-btn {
-        margin-left: 50px !important;
-    } 
-    nav input.form-control:active, nav input.form-control:focus,  nav input.form-control:hover,  nav .input-group-btn img:hover + input {
-        width: 50px !important;
-        margin-left: -49px !important;
-    }*/
-    
 }
 @media (min-width: 576px) { 
     .container {
         padding-left: 0px; 
         padding-right: 0px; 
     }
-   /*  nav .input-group-btn {
-        margin-left: 50px !important;
-    }
-    nav input.form-control:active, nav input.form-control:focus,  nav input.form-control:hover,  nav .input-group-btn img:hover + input {
-        width: 50px !important;
-        margin-left: -49px !important;
-    } */
 }
 
 @media (min-width: 768px) { 
-    /* nav .input-group-btn {
-        margin-left: 80px;
-    }
-    nav input.form-control:active, nav input.form-control:focus,  nav input.form-control:hover,  nav .input-group-btn img:hover + input {
-        width: 80px !important;
-        margin-left: -79px;
-    } */
 }
 @media (min-width: 992px) { 
-    
- }
-
+}
 @media (min-width: 1200px) { 
-    
- }
+}
 
 #LoginBlock .form-check-label{
     color: #414141;;
@@ -156,4 +141,36 @@ nav input.form-control:active, nav input.form-control:focus,  nav input.form-con
     background-position-y: 10px;
     background-repeat: no-repeat;
     background-size: 10%;
+}
+
+/* loadingBlock */
+.loadingBlock {
+    display: none;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: url(../images/ajax-loader.gif) center 45% no-repeat #000;
+}
+.loadingBlock .message {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+.loadingBlock.show {
+    display: block;
+}
+
+/* filterBlock */
+.filterBlock {
+    margin-top: 0px; 
+}
+.filterBlock .card {
+    border: none;
 }

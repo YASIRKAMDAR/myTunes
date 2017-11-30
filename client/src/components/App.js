@@ -5,6 +5,7 @@ import Header from './Header';
 import Results from './Results';
 import Filter from './Filter';
 import Search from './Search';
+import Loading from './Loading';
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
             <BrowserRouter>
             <div>
                 <Header />
+                <Loading />
                 <div className="container">
                     <Route exact  path="/" component={Search} />
                     <Route  path="/favourites" component={Filter} />

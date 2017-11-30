@@ -5,8 +5,12 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class Results extends React.Component {
-    componentDidMount()
-    {
+    componentWillMount() {
+        this.props.loading(false);
+    }
+
+    componentDidMount() {
+        console.log(this.props)
     }
     AddToFav(event) {
         event.preventDefault();
@@ -53,18 +57,26 @@ class Results extends React.Component {
         var isFavourite = false;
         if(this.props.location.pathname == "/")
         {
-            if(this.props.results !== null)
+            if(this.props.results !== null) {
                 list = this.props.results.results;
+            }
         }
         else
         {
             isFavourite = true;
-            if(this.props.favourites !== null)
-                list = this.props.favourites.data;
+            if(this.props.favourites !== null) {
+                if(this.props.favourites.filterKey === undefined || this.props.favourites.filterKey == '') {
+                    list = this.props.favourites.data;
+                }
+                else {
+                    list = this.props.favourites.filteredResults;
+                }
+            }
         }
         switch (list)
         {
             case null:
+            case undefined:
               return  <p></p>
             case false:
                 return <p>No results to display</p>
