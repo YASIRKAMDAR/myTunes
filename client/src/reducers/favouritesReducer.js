@@ -3,6 +3,7 @@ import { GET_FAVOURITE,ADD_FAVOURITE, REMOVE_FAVOURITE, FILTER_FAVOURITE  } from
 export default function(state = null, action) {
     switch(action.type) {
     case REMOVE_FAVOURITE:
+        state.filteredResults = state.filteredResults ||  state.data;
         return Object.assign({}, state, {
             data: state.data.filter(v => v.collectionId !== action.payload.collectionId),
             filteredResults: state.filteredResults.filter(v => v.collectionId !== action.payload.collectionId)
