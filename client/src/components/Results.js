@@ -99,13 +99,16 @@ class Results extends React.Component {
                                         <div className="card-text text-truncate" title={result.collectionCensoredName}>{result.collectionCensoredName}</div>
                                         <Row>
                                             <Col sm="4">
-                                                <a href={result.collectionViewUrl} target="_blank">view details</a>
+                                                <a className="badge badge-primary" href={result.collectionViewUrl} target="_blank">
+                                                View details</a>
                                             </Col>
                                             <Col sm="8" className="add-favourites">
-                                                <a href={"#" + result.collectionId} id={result.collectionId} onClick={(event) => this.AddToFav(event)}>Add to favourites</a>
+                                                <a className="badge badge-success" href={"#" + result.collectionId} id={result.collectionId} onClick={(event) => this.AddToFav(event)}>
+                                                Add to favourites</a>
                                             </Col>
                                             <Col sm="8" className="remove-favourites">
-                                                <a href={"#" + result.collectionId} id={result.collectionId} onClick={(event) => this.RemoveFav(event)}>No more my favourite</a>
+                                                <a className="badge badge-danger" href={"#" + result.collectionId} id={result.collectionId} onClick={(event) => this.RemoveFav(event)}>
+                                                No more my favourite</a>
                                             </Col>
                                         </Row>
                                     </CardBody>
