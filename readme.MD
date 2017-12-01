@@ -6,6 +6,7 @@ myTunes frontend app
 https://github.com/YASIRKAMDAR/myTunes
 
 ## Hiroku app link: 
+https://sleepy-coast-25326.herokuapp.com
 
 ### Application details
 The application is created using react/redux client side and nodeJS express server side for the api calls to itunes API.
@@ -43,5 +44,13 @@ Assignment task breakup status is as follows:
 6) Use the url following url to run the application
 ` http://localhost:3000/ `
 
+## design and implementation decisions 
+The application stack used is as fillows
+
+1) NodeJs Express Backend for API Gateway and integration
+2) React application frontend (Creat react app) [Webpack, es6]
+3) Bootstrap 4 using reactstrap package for responsive UI
+4) local storage to manage user favourites. Local storage allows the application to run without a datastore but limits the user to have the data specific to a device and browser used.
+  
 
 
