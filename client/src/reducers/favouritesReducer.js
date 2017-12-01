@@ -22,15 +22,20 @@ export default function(state = null, action) {
             }); 
         }
     case FILTER_FAVOURITE:
-        state.data = state.data || [];
-        var updatedList = state.data.filter(function(item){
-          return item.artistName.toString().toLowerCase().search(
-            action.payload.toString().toLowerCase()) !== -1;
-        });
-        return Object.assign({}, state, {
-            filterKey: action.payload,
-            filteredResults: updatedList
-        }); 
+        try {
+            state.data = state.data || [];
+            var updatedList = state.data.filter(function(item){
+              return item.artistName.toString().toLowerCase().search(
+                action.payload.toString().toLowerCase()) !== -1;
+            });
+            return Object.assign({}, state, {
+                filterKey: action.payload,
+                filteredResults: updatedList
+            });    
+        } catch (error) {
+            console.log("no state to filter");
+        }
+         
     case GET_FAVOURITE:
         return action.payload || false;
     default:
