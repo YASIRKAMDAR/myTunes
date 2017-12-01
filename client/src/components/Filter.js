@@ -24,9 +24,9 @@ class Filter extends React.Component {
     render() {
         return (
             <Row className="filterBlock">
-                <Col md="4" lg="6">
+                <Col md="4" lg="4" sm="4" xs="4">
                 </Col>
-                <Col md="8" lg="6">
+                <Col md="8" lg="8" sm="8" xs="8">
                     <Card className="text-center">
                         <CardBody>
                         <Form>
